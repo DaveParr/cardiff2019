@@ -1,8 +1,11 @@
 # Site settings
-baseurl = "https://satrdays-event-template.netlify.com/"
+baseurl = "https://cardiff2019.satrdays.org/"
 languageCode = "en-us"
 title = "satRday"
 theme = ["hugo-satrdays-theme", "hugo-agency-theme"]
+
+# Disable taxonomies that are not used to suppress warnings https://discourse.gohugo.io/t/found-no-layout-for-taxonomyterm-language-en-output-format-html/16376
+disableKinds = ["taxonomyTerm"]
 
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = ""
@@ -17,8 +20,8 @@ googleAnalytics = ""
 
   # To provide some metadata for search engines feel free to add a few
   # information about you and your website.
-  name = "satRday [My City]"
-  description = "R conference in [My City]"
+  name = "satRday Cardiff"
+  description = "R conference in Cardiff"
   # email = "your@email.com"
 
   # Link custom assets relative to /static
@@ -77,13 +80,14 @@ googleAnalytics = ""
   [params.hero]
     # To change the background image of the hero, replace 'header-bg.jpg' in
     # the 'static/img' folder.
-    title = "satRday [My City]"
-    subtitle = "A conference for users of the R Language on [Conference Date]"
+    title = "satRday Cardiff"
+    subtitle = "A conference for users of the R Language on 16th November 2019"
     bg = true
     buttonText = "Tell me more"
 
 
   # About [Services] section
+  # FIXME: fa-icons don't seem to show on deployment
   [params.services]
     enable = true
     title = "About"
@@ -94,38 +98,38 @@ googleAnalytics = ""
     [[params.services.row.list]]
       icon = "fa-clock-o"
       title = "Details"
-      description = "[Conference Date] at [Conference Location]"
-      url = "#"
+      description = "16th November at Cardiff University"
+      url = ""
 
     [[params.services.row.list]]
       icon = "fa-laptop"
       title = "Hands on"
       description = "Practical applications and workshop sessions"
-      url = "#"
+      url = ""
 
     [[params.services.row.list]]
       icon = "fa-graduation-cap"
       title = "Learning"
       description = "Gain knowledge from your peers and experienced professionals"
-      url = "#"
+      url = ""
 
     [[params.services.row.list]]
       icon = "fa-users"
       title = "Community Lead"
       description = "Community organised, community focussed"
-      url = "#"
+      url = ""
 
     [[params.services.row.list]]
       icon = "fa-money"
       title = "Affordable"
-      description = "Only [£30]"
-      url = "#"
+      description = "Less than a days wage"
+      url = ""
 
     [[params.services.row.list]]
       icon = "fa-universal-access"
       title = "Accessible"
       description = "Inclusive, supportive and respectful environment"
-      url = "#"
+      url = ""
 
   # Register section
   # You only need ONE of these active
@@ -133,12 +137,12 @@ googleAnalytics = ""
     enable = true
     title = "Register"
     bg = true
-    accountevent = "ultimateconf/2013"
+    accountevent = "satrday-cardiff/satrday-cardiff-2019"
       # Go to https://ti.to/ and find the account (under your user) and event pair string e.g. "cardiff-satrday/2018"
       # include botht the account and event in a string, seperated by /, with no spaces
 
   [params.eventbrite]
-    enable = true
+    enable = false
     title = "Register"
     bg = true
     eid = "32416000129" 
@@ -148,7 +152,7 @@ googleAnalytics = ""
       # Supply this string as the value to `eid` above
 
   [params.tickettailor]
-    enable = true
+    enable = false
     title = "Register"
     bg = true
     eventviewid = "162430"
@@ -158,23 +162,34 @@ googleAnalytics = ""
   
   # Call for papers section
   [params.callforpapers]
-    enable = true
-    title = "Call For Papers"
+    enable = false
+    title = "Call For Speakers"
     bg = false
-    CfSpage = "/test3490"
+    CfSpage = "/cardiff-satrday-2019"
       # Go to Organizer > My Events > Dashboard and copy the "CfS Page" string into the `CfSpage` value
-    dates = "09 Aug - 21 Sep 2018"
+    dates = "1 October - 1 November"
 
+
+  # Hackathon section
+  [params.hackathon]
+    enable = true
+    title = "Hackathon"
+    location= """Cardiff University Main Building Council Chamber (Room 1.77, 1st floor, Main Building, Park Place, CF10 3AT)"""
+    bg = false
+    dates = "15 November 2019"
+    times= "13:00-17:30"
+    brief1 = "We will explore a unique dataset collated by Anna-Jayne Metcalfe for the <a href= 'https://tdor.translivesmatter.info/' > TDOR  </a> website."
+    brief2 = "The event will involve activities suitable for all levels and backgrounds so feel free to come along. Click <a href= 'https://www.meetup.com/Cardiff-R-User-Group/events/265292928/' > here  </a> for further info."
   # Talk [Portfolio] section
   [params.portfolio]
     enable = true
     # All projects defined in their own files. You can find example projects
     # at 'exampleSite/data/projects'. Copy the 'projects' folder into the 'data' directory
     # at the root of this Hugo site.
-    # For more informtion take a look at the README.
-    title = "Talks"
-    subtitle = "Who's saying what"
-    bg = true
+    # For more information take a look at the README.
+    title = "Schedule"
+    subtitle = ""
+    bg = false
 
     [params.portfolio.modal]
       client = "Client"
@@ -184,13 +199,13 @@ googleAnalytics = ""
 
   # Schedule section
   [params.schedule]
-    enable = true
+    enable = false
     title = "Schedule"
     bg = false
 
   # Important Dates [About] section
   [params.about]
-    enable = true
+    enable = false
     title = "Important Dates"
     subtitle = "Be prepared!"
     endpoint = "Conference"
@@ -213,76 +228,156 @@ googleAnalytics = ""
     [[params.about.events]]
       img = "3.jpg"
       date = "Third Date"
-      title = "Call For Papers"
+      title = "Call For Speakers"
       description = "Submissions for speakers are now open!"
 
     [[params.about.events]]
       img = "4.jpg"
       date = "Fourth Date"
-      title = "Call For Papers Ends"
+      title = "Call For Speakers Ends"
       description = "Cut off date for speaker submissions"
   
   # Location section
   [params.location]
     enable = true
-    title = "Location title"
+    title = "Hadyn Ellis Medical Research Facilitys"
     bg = true
-    iframesrc = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12770.336629178193!2d174.7680403!3d-36.8524341!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x868a73f26ed3e621!2sDepartment+of+Statistics%2C+University+of+Auckland!5e0!3m2!1sen!2suk!4v1533231461829"
-
+    iframesrc = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9936.631018024384!2d-3.1836613!3d51.4919725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf9c395adcc743dce!2sHadyn%20Ellis%20Medical%20Research%20Facility!5e0!3m2!1sen!2suk!4v1568539146159!5m2!1sen!2suk"
   # Team section
   [params.team]
     enable = true
     # Possibility to center items
     #center = true
     title = "Team"
-    subtitle = "The people putting it together"
-    bg = false
+    subtitle = "The people putting Cardiff satRday together"
+    bg = true
     description = ""
-    speakers = "Speakers"
+    speakers = "Key Note Speakers"
     
 
     # All team member's pictures are stored under 'static/img/team'.
     # Replace them with your own too.
     # Suggestion: Image size should be at least 360px*360px or the alignment might be affected.
     [[params.team.members]]
-      img = "faceholder.png"
-      name = "Organiser Name 1"
-      position = "Organiser Position 1"
+      img = "sefaozalp.jpg"
+      name = "Sefa Ozalp"
+      position = "Co-Organiser"
       reportsTo = ""
-      livesIn = "[Munich, Germany](#some-maps-url)"
+      livesIn = "[Cardiff, UK](https://www.google.com/maps/place/Cardiff/data=!4m2!3m1!1s0x486e02d434ec53f5:0x143406db6586670e?sa=X&ved=2ahUKEwjcmcb7tojlAhUIEcAKHcSmBRYQ8gEwAHoECAoQAQ)"
       scope = [
-        "Role 1 for [thing 1](#)",
-        "Role 2 for [thing 2](#)",
-        "Role 3 for [thing 3](#)"
+        "Lead Data Science Researcher at [HateLab](https://hatelab.net/people/)",
+        "Research Assistant at [Social Data Science Lab](http://socialdatalab.net/)"
       ]
       # For bio markdown and even multiline strings are available.
-      bio = """I do things,
-      and stuff"""
+      bio = """I use R to wrangle big social media data and monitor/analyse cyber-hate speech."""
       social = [
-        ["fa-twitter", "#"],
-        ["fa-github", "#"],
-        ["fa-linkedin", "#"]
+        ["fa-twitter", "https://twitter.com/sefaozalp"],
+        ["fa-github", "https://github.com/sefabey"],
+        ["fa-linkedin", "https://www.linkedin.com/in/sefaozalp/"]
       ]
 
     [[params.team.members]]
-      img = "faceholder.png"
-      name = "Organiser Name 2"
-      position = "Organiser Position 2"
+      img = "paul_brennan.jpg"
+      name = "Paul Brennan"
+      position = "Co-Organiser"
+      livesIn = "[Cardiff, UK](https://www.google.com/maps/place/Cardiff/data=!4m2!3m1!1s0x486e02d434ec53f5:0x143406db6586670e?sa=X&ved=2ahUKEwjcmcb7tojlAhUIEcAKHcSmBRYQ8gEwAHoECAoQAQ)"
+      scope = [
+        "Reader in the Division of [Cancer & Genetics](https://www.cardiff.ac.uk/medicine) at the School of Medicine"
+      ]
       social = [
-        ["fa-twitter", "#"],
-        ["fa-github", "#"],
-        ["fa-linkedin", "#"]
+        ["fa-twitter", "https://twitter.com/brennanpcardiff"],
+        ["fa-github", "https://github.com/brennanpincardiff"],
+        #["fa-linkedin", "#"],
+        ["fa-globe", "https://www.cardiff.ac.uk/people/view/122818-brennan-paul"]
       ]
 
     [[params.team.members]]
-      img = "faceholder.png"
-      name = "Organiser Name 3"
-      position = "Organiser Position 3"
-      social = [
-        ["fa-twitter", "#"],
-        ["fa-github", "#"],
-        ["fa-linkedin", "#"]
+      img = "heather.jpg"
+      name = "Heather Turner"
+      position = "Co-Organiser"
+
+      scope = [
+        "Freelancer",
+        "[Forwards](https://forwards.github.io/) core team",
+        "[R-Ladies](https://twitter.com/rladiesremote?lang=en) Remote co-organizer"
       ]
+      livesIn = "[Newport, UK](https://www.google.co.uk/maps/place/Newport/@51.5742802,-3.0493215,12z/data=!3m1!4b1!4m5!3m4!1s0x486e1e131ca04b95:0x495c163a920de244!8m2!3d51.584151!4d-2.997664?hl=en&expflags=__data_rollout__Tactile.IsDogfoodRollout__launched__%3Afalse%2C__data_rollout__Tactile.IsFishfoodRollout__launched__%3Afalse)"
+      social = [
+        ["fa-twitter", "https://twitter.com/HeathrTurnr"],
+        ["fa-github", "https://github.com/hturner"],
+        ["fa-linkedin", "https://www.linkedin.com/in/heathrturnr/"]
+      ]
+
+    [[params.team.members]]
+      img = "dave_parr.jpg"
+      name = "Dave Parr"
+      position = "Co-Organiser"
+      livesIn = "[Cardiff, UK](https://www.google.com/maps/place/Cardiff/data=!4m2!3m1!1s0x486e02d434ec53f5:0x143406db6586670e?sa=X&ved=2ahUKEwjcmcb7tojlAhUIEcAKHcSmBRYQ8gEwAHoECAoQAQ)"
+      scope = [
+        "Head of Data Science at [Surple](https://surple.co.uk/)"
+      ]
+      social = [
+        ["fa-twitter", "https://twitter.com/DaveParr"],
+        ["fa-github", "https://github.com/DaveParr"],
+        ["fa-linkedin", "https://www.linkedin.com/in/davidrgparr/"],
+        ["fa-globe", "https://daveparr.info/"]
+      ]
+    
+      [[params.team.members]]
+      img = "dominik.jpg"
+      name = "Dominik Krzemiński"
+      position = "Co-Organiser"
+      livesIn = "[Cardiff, UK](https://www.google.com/maps/place/Cardiff/data=!4m2!3m1!1s0x486e02d434ec53f5:0x143406db6586670e?sa=X&ved=2ahUKEwjcmcb7tojlAhUIEcAKHcSmBRYQ8gEwAHoECAoQAQ)"
+      scope = [
+        "PhD student at Cardiff University Brain Research Imaging Centre",
+        "Open Source Tech Lead at [Appsilon](https://appsilon.com/)"
+      ]
+      social = [
+        ["fa-twitter", "https://twitter.com/dokatox"],
+        ["fa-github", "https://github.com/dokato"],
+        #["fa-linkedin", "#"]
+      ]
+
+
+      # [[params.team.members]]
+      # img = "faceholder.png"
+      # name = "Mark"
+      # position = "Co-Organiser"
+      # social = [
+      #   ["fa-twitter", "#"],
+      #   ["fa-github", "#"],
+      #   ["fa-linkedin", "#"]
+      # ]
+
+      [[params.team.members]]
+      img = "steph.jpg"
+      name = "Steph Locke"
+      position = "Co-Organiser"
+      livesIn = "[Cardiff, UK](https://www.google.com/maps/place/Cardiff/data=!4m2!3m1!1s0x486e02d434ec53f5:0x143406db6586670e?sa=X&ved=2ahUKEwjcmcb7tojlAhUIEcAKHcSmBRYQ8gEwAHoECAoQAQ)"
+      scope = [
+        "Founder of [Nightingale HQ](https://nightingalehq.ai/) & [Locke Data](https://itsalocke.com/)",
+        "Microsoft AI & Data Platform MVP",
+        "[satRdays](https://github.com/satRdays) global leader"
+      ]
+      social = [
+        ["fa-twitter", "https://twitter.com/TheStephLocke"],
+        ["fa-github", "https://github.com/stephlocke"],
+        ["fa-linkedin", "https://www.linkedin.com/in/stephanielocke/"]
+      ]
+
+      [[params.team.members]]
+      img = "mark.jpeg"
+      name = "Mark James"
+      position = "Co-Organiser"
+      livesIn = "[Cardiff, UK](https://www.google.com/maps/place/Cardiff/data=!4m2!3m1!1s0x486e02d434ec53f5:0x143406db6586670e?sa=X&ved=2ahUKEwjcmcb7tojlAhUIEcAKHcSmBRYQ8gEwAHoECAoQAQ)"
+      scope = [
+        "Senior BI & Data Warehouse Dev at NHS"
+      ]
+      social = [
+        ["fa-linkedin", "https://www.linkedin.com/in/mrmrj/"]
+      ]
+
+
 
   # Client section
   [params.clients_list]
@@ -297,33 +392,37 @@ googleAnalytics = ""
     # Replace them with your clients's logos.
     # Suggestion: .svg in the size of 280px*80px looks good
     [[params.clients]]
-      logo = "envato.jpg"
-      link = "#"
+      logo = "jr_logo.png"
+      link = "https://www.jumpingrivers.com"
 
     [[params.clients]]
-      logo = "designmodo.jpg"
-      link = "#"
+      logo = "caruni.jpg"
+      link = "https://www.cardiff.ac.uk/"
 
     [[params.clients]]
-      logo = "themeforest.jpg"
-      link = "#"
+      logo = "appsilon.png"
+      link = "https://appsilon.com/"
 
     [[params.clients]]
-      logo = "creative-market.jpg"
-      link = "#"
+      logo = "whyr.jpg"
+      link = "http://whyr.pl/foundation/"
+
+    [[params.clients]]
+      logo = "alac.png"
+      link = "https://www.alacrityfoundation.co.uk/"
   
   [params.diversity]
     enable = true
     title = "Diversity"
-    bg = true
+    bg = false
 
   # Contact section
   [params.contact]
     enable = true
     title = "Contact us"
-    subtitle  = "Lorem ipsum dolor sit amet consectetur."
+    subtitle  = "Your message will be recieved by the local Cardiff team"
     buttonText = "Send message"
-    # netlify = true
+    netlify = true
 
     # Since this template is static, the contact form uses www.formspree.io as a
     # proxy. The form makes a POST request to their servers to send the actual
@@ -343,7 +442,7 @@ googleAnalytics = ""
     # add some custom JS script to finish the implementation.
     # postURL = "https://example.com/mailout/"
 
-    email = "your@email.com"
+    email = "satrday.cardiff@gmail.com"
 
     # Success and error message overwrite for async contact form
     #thanks = "Thank you for awesomely contacting us."
